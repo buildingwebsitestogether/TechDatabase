@@ -572,37 +572,61 @@
 
     <script>
         // Projects Data State (Only 100% genuine internal creations)
+        // Each entry configures rendering, tag chips, category filters, and modal interaction modes.
         const DEFAULT_PROJECTS = [
+            // ------------------------------------------------------------------------
+            // 1. BASKETBALL CHAOS ARCADE
+            // Primary interactive feature: Canvas 2D basketball game with trajectory math,
+            // score streak tracking, procedural Web Audio SFX, and in-game shop upgrades.
+            // ------------------------------------------------------------------------
             {
                 id: 'chaos-basketball',
                 title: 'Basketball Chaos Arcade',
-                category: 'Games & Arcade',
+                category: 'Games & Arcade', // Categorized as a playable arcade game
                 description: 'An interactive HTML5 Canvas arcade basketball simulation featuring drag-aim trajectory physics, dynamic moving hoops, streak multipliers, procedural Web Audio SFX, and skin upgrades.',
-                isGame: true,
+                isGame: true, // Enables "PLAY GAME NOW" action button & launches canvas modal
                 tags: ['HTML5 Canvas', 'Web Audio API', 'Physics', 'JavaScript'],
             },
+
+            // ------------------------------------------------------------------------
+            // 2. WEB AUDIO SFX SYNTHESIZER
+            // Procedural audio generation module: Generates sound effects dynamically
+            // using Web Audio API oscillators, noise buffers, and gain envelopes.
+            // ------------------------------------------------------------------------
             {
                 id: 'sfx-synth-lab',
                 title: 'Web Audio SFX Synthesizer',
-                category: 'Audio & Synthesizers',
+                category: 'Audio & Synthesizers', // Categorized under Audio Synthesizers
                 description: 'A custom Web Audio API sound generator that synthesizes realistic arcade bounce, swish, rim contact, and coin pickup sounds without external audio assets.',
-                isGame: false,
+                isGame: false, // Displayed as a detail card in the portfolio grid
                 tags: ['Web Audio API', 'Oscillators', 'Audio Filters', 'JavaScript'],
             },
+
+            // ------------------------------------------------------------------------
+            // 3. INTERACTIVE PARTICLE SANDBOX (FIXED CATEGORY)
+            // Real-time canvas particle engine powering ambient backdrops & streak trails.
+            // Fixed: Updated category from 'Games & Arcade' to 'Web Tools' to match isGame: false.
+            // ------------------------------------------------------------------------
             {
                 id: 'particle-playground',
                 title: 'Interactive Particle Sandbox',
-                category: 'Games & Arcade',
+                category: 'Web Tools', // Updated category to align with non-game status (isGame: false)
                 description: 'Real-time vector particle canvas simulation powering smooth ambient backdrops and fiery trail effects for high-score streaks.',
-                isGame: false,
+                isGame: false, // Canvas physics & background rendering utility
                 tags: ['HTML5 Canvas', '2D Math', 'Animation Loop'],
             },
+
+            // ------------------------------------------------------------------------
+            // 4. DEVHUB PORTFOLIO COPILOT
+            // Assistant tool: Embedded conversational widget providing portfolio insights,
+            // physics formulas, and project breakdown information.
+            // ------------------------------------------------------------------------
             {
                 id: 'copilot-workspace',
                 title: 'DevHub Portfolio Copilot',
-                category: 'Web Tools',
+                category: 'Web Tools', // Categorized as a developer web tool
                 description: 'An embedded interactive assistant tool that answers questions regarding project physics algorithms, technical stack choices, and architecture details.',
-                isGame: false,
+                isGame: false, // Interactive assistant drawer UI component
                 tags: ['JavaScript', 'DOM Logic', 'Conversational UI'],
             }
         ];
