@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Developer Portfolio & Project Hub</title>
+    <title>Sam's DevHub - Building With AI Portfolio</title>
 
     <!-- Favicon (Basketball Vector Icon) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23ea580c%22 stroke=%22%23111827%22 stroke-width=%224%22/><path d=%22M 4,50 H 96 M 50,4 V 96 M 16,16 C 36,36 36,64 16,84 M 84,16 C 64,36 64,64 84,84%22 fill=%22none%22 stroke=%22%23111827%22 stroke-width=%225%22 stroke-linecap=%22round%22/></svg>">
@@ -90,47 +90,52 @@
 </head>
 <body class="bg-darkbg text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-brand-500 selection:text-white transition-colors duration-300">
 
+    <!-- Ambient Lighting Backdrop -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <canvas id="bgCanvas" class="w-full h-full opacity-40"></canvas>
         <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-500/20 rounded-full animate-glow pointer-events-none"></div>
         <div class="absolute top-1/2 -right-40 w-96 h-96 bg-purple-500/20 rounded-full animate-glow pointer-events-none" style="animation-delay: 2s;"></div>
     </div>
 
+    <!-- Header Navigation Bar -->
     <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3 group">
+                <!-- Logo / Homepage Link -->
+                <a href="#" class="flex items-center gap-3 group" title="Return to Homepage">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-purple-600 to-pink-500 p-[2px] transition-transform group-hover:scale-105 shadow-md">
                         <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
                             <i class="fa-solid font-mono font-bold text-brand-500 text-lg">&lt;/&gt;</i>
                         </div>
                     </div>
                     <div>
-                        <span class="font-bold text-lg sm:text-xl tracking-tight text-white">Dev<span class="gradient-text">Hub</span></span>
-                        <span class="text-xs text-slate-400 block -mt-1 font-mono">Portfolio & Projects</span>
+                        <span class="font-bold text-lg sm:text-xl tracking-tight text-white">Sam's <span class="gradient-text">DevHub</span></span>
+                        <span class="text-xs text-slate-400 block -mt-1 font-mono">Building With AI Student Portfolio</span>
                     </div>
                 </a>
 
                 <!-- Nav Links -->
                 <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium">
-                    <a href="#projects" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">Projects</a>
+                    <a href="#" class="px-3 py-2 rounded-lg text-white font-semibold hover:bg-slate-800/50 transition-all">Home</a>
+                    <a href="#about" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">About Me</a>
+                    <a href="#projects" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">My Creations</a>
                     <a href="#skills" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">Tech Stack</a>
-                    <a href="#about" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">About</a>
-                    <a href="#contact" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">Contact</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg text-purple-400 hover:text-purple-300 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+                        <i class="fa-brands fa-github"></i> Repository
+                    </a>
                 </nav>
 
                 <!-- Action Buttons -->
                 <div class="flex items-center gap-2 sm:gap-3">
                     <button id="navPlayGameBtn" class="px-3 py-2 text-xs sm:text-sm font-bold rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 hover:from-orange-400 hover:to-amber-400 shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
                         <span>🏀</span>
-                        <span class="hidden sm:inline">Play Chaos Hoop</span>
+                        <span class="hidden sm:inline">Play Basketball Chaos</span>
                     </button>
                     <button id="addProjectBtn" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white border border-slate-700/80 transition-all flex items-center gap-2">
                         <i class="fa-solid fa-plus text-xs"></i>
-                        <span class="hidden lg:inline">Add Project</span>
+                        <span class="hidden lg:inline">Add Creation</span>
                     </button>
-                    <button id="aiBotToggleBtn" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-brand-400 border border-slate-700/50 transition-all relative group" title="Ask AI Assistant">
+                    <button id="aiBotToggleBtn" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-brand-400 border border-slate-700/50 transition-all relative group" title="Ask AI Copilot">
                         <i class="fa-solid fa-robot text-base"></i>
                         <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></span>
                         <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
@@ -143,46 +148,48 @@
         </div>
 
         <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 px-4 pt-3 pb-4 space-y-2">
-            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">Projects</a>
+            <a href="#" class="mobile-nav-link block px-3 py-2 rounded-lg text-white font-semibold hover:bg-slate-800">Home</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">About Me</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">My Creations</a>
             <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">Tech Stack</a>
-            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">About</a>
-            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">Contact</a>
+            <a href="https://github.com" target="_blank" class="mobile-nav-link block px-3 py-2 rounded-lg text-purple-400 hover:bg-slate-800"><i class="fa-brands fa-github"></i> Repository</a>
         </div>
     </header>
 
     <main class="relative z-10">
+        <!-- Hero Section -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-16">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs sm:text-sm font-medium">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>Interactive Portfolio & Playable Apps</span>
+                        <span>100% Original Creations & Playable Browser Games</span>
                     </div>
 
                     <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        Crafting Web Apps & <br class="hidden sm:inline"/>
-                        <span class="gradient-text">Arcade Experiences</span>
+                        Interactive Web Apps & <br class="hidden sm:inline"/>
+                        <span class="gradient-text">Browser Arcade Games</span>
                     </h1>
 
                     <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Welcome to my developer hub. Explore live web applications, AI integrations, developer utilities, and jump straight into my interactive <strong>Basketball Chaos Arcade Game</strong>!
+                        Hi, I'm Sam! I'm a high school basketball player learning to code in Mr. Smith's <strong>Building With AI</strong> class. Welcome to my portfolio featuring original web apps and my custom-built basketball arcade game!
                     </p>
 
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                         <button id="heroPlayGameBtn" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-slate-950 font-extrabold font-tech tracking-wider uppercase shadow-xl shadow-orange-500/30 hover:scale-105 transition-all flex items-center gap-3">
                             <span class="text-xl">🏀</span>
-                            <span>Launch Basketball Chaos Game</span>
+                            <span>Play Basketball Chaos</span>
                         </button>
                         <a href="#projects" class="px-6 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 border border-slate-700/60 font-semibold transition-all flex items-center gap-2">
                             <i class="fa-solid fa-folder-open text-slate-400"></i>
-                            <span>View All Projects</span>
+                            <span>Explore Creations</span>
                         </a>
                     </div>
 
                     <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
                         <div>
                             <div class="text-2xl sm:text-3xl font-bold text-white font-mono" id="statProjectCount">0</div>
-                            <div class="text-xs text-slate-400">Featured Projects</div>
+                            <div class="text-xs text-slate-400">Built Projects</div>
                         </div>
                         <div>
                             <div class="text-2xl sm:text-3xl font-bold text-white font-mono" id="statCategories">0</div>
@@ -190,7 +197,7 @@
                         </div>
                         <div>
                             <div class="text-2xl sm:text-3xl font-bold text-amber-400 font-mono" id="statHighScore">0</div>
-                            <div class="text-xs text-slate-400">Chaos Game High Score</div>
+                            <div class="text-xs text-slate-400">Basketball High Score</div>
                         </div>
                     </div>
                 </div>
@@ -205,18 +212,19 @@
                                     <div class="w-3 h-3 rounded-full bg-amber-500"></div>
                                     <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
                                 </div>
-                                <span class="text-slate-500 text-xs">developer-profile.ts</span>
+                                <span class="text-slate-500 text-xs">sam-profile.ts</span>
                             </div>
                             <div class="p-5 space-y-2 text-slate-300 overflow-x-auto">
-                                <p><span class="text-purple-400">const</span> <span class="text-blue-400">developer</span> = {</p>
-                                <p class="pl-4"><span class="text-slate-400">name:</span> <span class="text-emerald-300">'Fullstack & Game Dev'</span>,</p>
-                                <p class="pl-4"><span class="text-slate-400">featuredGame:</span> <span class="text-amber-300">'Basketball Chaos'</span>,</p>
-                                <p class="pl-4"><span class="text-slate-400">techStack:</span> [<span class="text-emerald-300">'HTML5 Canvas'</span>, <span class="text-emerald-300">'Tailwind'</span>, <span class="text-emerald-300">'JS'</span>],</p>
-                                <p class="pl-4"><span class="text-slate-400">status:</span> <span class="text-emerald-400">'Ready to Play & Hire'</span></p>
+                                <p><span class="text-purple-400">const</span> <span class="text-blue-400">profile</span> = {</p>
+                                <p class="pl-4"><span class="text-slate-400">name:</span> <span class="text-emerald-300">'Sam'</span>,</p>
+                                <p class="pl-4"><span class="text-slate-400">role:</span> <span class="text-brand-400">'Student @ Building With AI (Mr. Smith)'</span>,</p>
+                                <p class="pl-4"><span class="text-slate-400">featuredGame:</span> <span class="text-amber-300">'Basketball Chaos Arcade'</span>,</p>
+                                <p class="pl-4"><span class="text-slate-400">interests:</span> [<span class="text-emerald-300">'Basketball'</span>, <span class="text-emerald-300">'Reading'</span>, <span class="text-emerald-300">'Coding'</span>],</p>
+                                <p class="pl-4"><span class="text-slate-400">status:</span> <span class="text-emerald-400">'Building with AI & Balling 🏀'</span></p>
                                 <p>};</p>
                                 <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
-                                    <span class="text-slate-400">Click below to test ball physics:</span>
-                                    <button id="heroQuickPlay" class="px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-lg hover:bg-orange-500 hover:text-white transition-all">Launch Game Modal</button>
+                                    <span class="text-slate-400">Test ball physics engine:</span>
+                                    <button id="heroQuickPlay" class="px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-lg hover:bg-orange-500 hover:text-white transition-all font-semibold">Launch Game</button>
                                 </div>
                             </div>
                         </div>
@@ -225,20 +233,51 @@
             </div>
         </section>
 
+        <!-- About Me Section -->
+        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/60">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-mono">
+                        <i class="fa-solid fa-user-code"></i> Student Developer Profile
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">About Me</h2>
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                        Hey! I'm Sam, a high school student currently learning to build web projects in Mr. Smith's <strong>Building With AI</strong> class. As a dedicated high school basketball player who loves the game, I wanted to create something inspired by my passion on the court.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                        That drive led me to design and code <em>Basketball Chaos Arcade</em> using canvas physics and synthetic sound effects! When I'm off the court and outside of class, I enjoy reading, exploring new web technologies, and expanding this portfolio.
+                    </p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border border-slate-800">
+                    <h3 class="font-bold text-white text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-trophy text-amber-400"></i>
+                        <span>Basketball Chaos Highlights</span>
+                    </h3>
+                    <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Realistic trajectory aiming arc with adjustable power vectors</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Pure Web Audio API SFX (Swish, Bounce, Rim Clang, Coin pickup)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Full browser Back-button navigation support & offline download</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> In-game Chaos Shop with Fireball skin & extended guides</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creations & Projects Section -->
         <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/60">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
                         <i class="fa-solid fa-folder-open text-brand-500"></i>
-                        <span>Project Portfolio Hub</span>
+                        <span>My Creations & Interactive Demos</span>
                     </h2>
-                    <p class="text-slate-400 text-sm sm:text-base mt-1">Search, launch interactive demos, or play embedded games.</p>
+                    <p class="text-slate-400 text-sm sm:text-base mt-1">Search, launch interactive demos, or play embedded browser games.</p>
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-3">
                     <div class="relative">
                         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                        <input type="text" id="searchInput" placeholder="Search projects or tags..." class="w-full sm:w-64 pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 transition-colors">
+                        <input type="text" id="searchInput" placeholder="Search creations or tags..." class="w-full sm:w-64 pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 transition-colors">
                     </div>
                     <div class="flex items-center gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800">
                         <button id="viewGridBtn" class="p-2 rounded-lg bg-slate-800 text-brand-400" title="Grid View"><i class="fa-solid fa-grip"></i></button>
@@ -255,16 +294,17 @@
 
             <div id="noResults" class="hidden py-16 text-center bg-slate-900/40 rounded-2xl border border-slate-800">
                 <i class="fa-solid fa-folder-xmark text-4xl text-slate-600 mb-3"></i>
-                <h3 class="text-lg font-semibold text-white">No projects found</h3>
+                <h3 class="text-lg font-semibold text-white">No creations found</h3>
                 <p class="text-slate-400 text-sm mt-1">Try tweaking your search or category filters.</p>
                 <button id="resetFiltersBtn" class="mt-4 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-brand-400">Reset Filters</button>
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/60">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-2xl sm:text-3xl font-bold text-white">Skills & Tech Stack</h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-2">Technologies and tools powering these web apps & interactive games.</p>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Technologies powering my web applications, physics canvas engines, and audio synthesizers.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -272,12 +312,12 @@
                     <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 text-xl mb-4">
                         <i class="fa-solid fa-gamepad"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-3">Game & Canvas Development</h3>
+                    <h3 class="font-bold text-white mb-3">Game Engineering</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">HTML5 Canvas</span>
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Web Audio API</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Physics Engines</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Vector Math</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Vector Physics</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">2D Collisions</span>
                     </div>
                 </div>
 
@@ -285,12 +325,11 @@
                     <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
                         <i class="fa-solid fa-code"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-3">Frontend Web</h3>
+                    <h3 class="font-bold text-white mb-3">Frontend Development</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">JavaScript (ES6+)</span>
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Tailwind CSS</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">TypeScript</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">React</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Single-Page Architecture</span>
                     </div>
                 </div>
 
@@ -298,88 +337,67 @@
                     <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl mb-4">
                         <i class="fa-solid fa-brain"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-3">AI & APIs</h3>
+                    <h3 class="font-bold text-white mb-3">Web Tools & Assistants</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Gemini API</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">LLM Tooling</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">REST Integration</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">AI Copilot Logic</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Browser Storage</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">DOM Manipulation</span>
                     </div>
                 </div>
 
                 <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
                     <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl mb-4">
-                        <i class="fa-solid fa-server"></i>
+                        <i class="fa-solid fa-share-nodes"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-3">Backend & Workflow</h3>
+                    <h3 class="font-bold text-white mb-3">Distribution & Versioning</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Node.js</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Git / GitHub</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Vite / Webpack</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Git & GitHub</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Standalone Exports</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">History API</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/60">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white">About Me</h2>
-                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-                        I am a fullstack web developer and game programmer passionate about combining responsive web design with real-time interactive experiences.
-                    </p>
-                    <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
-                        This hub aggregates my interactive projects, developer utilities, and full-fledged arcade games like <strong>Basketball Chaos</strong>.
-                    </p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-white text-lg flex items-center gap-2">
-                        <i class="fa-solid fa-trophy text-amber-400"></i>
-                        <span>Basketball Chaos Highlights</span>
-                    </h3>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Realistic trajectory aiming arc with customizable power</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Procedurally synthesized Web Audio SFX (Swish, Bounce, Rim Clang)</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Dynamic hoops with horizontal & vertical movement modifiers</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> In-game Shop for ball skins & aim assistance upgrades</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+        <!-- Bookmarks & Quick Links Footer Section -->
         <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/60">
             <div class="max-w-3xl mx-auto glass-panel p-8 rounded-3xl border border-slate-800 text-center space-y-6">
                 <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-500 to-orange-500 p-[2px] mx-auto">
                     <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-xl text-brand-400">
-                        <i class="fa-solid fa-paper-plane"></i>
+                        <i class="fa-solid fa-bookmark"></i>
                     </div>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white">Let's Connect & Collaborate</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Bookmarks & Site Links</h2>
                 <p class="text-slate-400 text-sm sm:text-base max-w-lg mx-auto">
-                    Got a project idea, want to collaborate, or have feedback on Basketball Chaos? Get in touch!
+                    Quick bookmark links to my official homepage and source repository:
                 </p>
                 <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-                    <button onclick="copyToClipboard('developer@example.com')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 hover:border-slate-700 transition-all text-sm font-medium flex items-center gap-2">
-                        <i class="fa-solid fa-envelope text-brand-400"></i>
-                        <span>developer@example.com</span>
-                    </button>
-                    <a href="https://github.com" target="_blank" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 hover:border-slate-700 transition-all text-sm font-medium flex items-center gap-2">
-                        <i class="fa-brands fa-github text-purple-400"></i>
-                        <span>GitHub</span>
+                    <a href="#" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-brand-400 hover:border-brand-500 transition-all text-sm font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Homepage (Current Site)</span>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-purple-400 hover:border-purple-500 transition-all text-sm font-semibold flex items-center gap-2">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub Repository</span>
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Playable Game Modal Modal View -->
     <div id="gameModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-2 sm:p-4 bg-slate-950/90 backdrop-blur-md">
         <div class="relative w-full max-w-5xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[92vh] sm:h-[88vh]">
             <!-- Header bar for Game -->
             <div class="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-800">
                 <div class="flex items-center gap-3">
+                    <button id="backToHomeBtn" class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs flex items-center gap-1.5" title="Go back to homepage">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span class="hidden sm:inline font-semibold">Back to Homepage</span>
+                    </button>
                     <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center text-lg shadow">🏀</span>
                     <div>
                         <h3 class="font-arcade text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 tracking-wider">BASKETBALL CHAOS</h3>
-                        <p class="text-[10px] text-slate-400 font-tech uppercase tracking-widest hidden sm:block">Drag ball to aim & shoot</p>
                     </div>
                 </div>
 
@@ -392,8 +410,11 @@
                         <option value="rookie">🟢 Rookie</option>
                         <option value="pro" selected>🟡 Pro</option>
                         <option value="allstar">🔴 All-Star</option>
-                        <option value="chaos">⚡ CHAOS</option>
                     </select>
+                    <button id="downloadGameBtn" class="px-2.5 py-1 rounded-lg bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 border border-emerald-700 text-xs font-semibold flex items-center gap-1" title="Download standalone game HTML file">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="hidden sm:inline">Download Game</span>
+                    </button>
                     <button id="toggleShopBtn" class="px-2.5 py-1 rounded-lg bg-indigo-900/80 text-indigo-200 border border-indigo-700 text-xs font-semibold flex items-center gap-1">
                         <i class="fa-solid fa-store text-indigo-400"></i>
                         <span class="hidden sm:inline">Shop</span>
@@ -401,7 +422,7 @@
                     <button id="toggleSoundBtn" class="p-1.5 rounded-lg bg-slate-800 text-amber-400 border border-slate-700 text-xs" title="Toggle Sound">
                         <i id="gameSoundIcon" class="fa-solid fa-volume-high"></i>
                     </button>
-                    <button id="closeGameModal" class="p-1.5 rounded-lg bg-red-950/80 text-red-300 border border-red-800 text-xs hover:bg-red-900 transition-colors">
+                    <button id="closeGameModal" class="p-1.5 rounded-lg bg-red-950/80 text-red-300 border border-red-800 text-xs hover:bg-red-900 transition-colors" title="Close Game View">
                         <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
@@ -414,7 +435,7 @@
                     <div>HIGH: <span id="gameHighScore" class="font-arcade text-emerald-400 text-base">0</span></div>
                     <div>STREAK: <span id="gameStreak" class="font-arcade text-orange-500 text-base">0 🔥</span></div>
                 </div>
-                <div id="gameStatusText" class="text-slate-400 text-xs font-mono hidden sm:block">Aim trajectory dots and release to shoot!</div>
+                <div class="text-slate-400 text-xs font-mono hidden sm:block">Drag ball to aim trajectory & release to shoot!</div>
             </div>
 
             <!-- Canvas Container -->
@@ -460,6 +481,7 @@
         </div>
     </div>
 
+    <!-- Project Detail Modal -->
     <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md">
         <div class="relative w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 space-y-4">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -472,55 +494,52 @@
             <p id="modalDescription" class="text-slate-300 text-sm leading-relaxed"></p>
             <div id="modalTechStack" class="flex flex-wrap gap-1.5"></div>
             <div class="pt-4 flex gap-3 justify-end border-t border-slate-800">
-                <a id="modalLiveLink" href="#" target="_blank" class="px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-semibold flex items-center gap-1.5 hover:bg-brand-500">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Link
-                </a>
+                <button id="modalActionBtn" class="px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-semibold flex items-center gap-1.5 hover:bg-brand-500">
+                    <i class="fa-solid fa-play"></i> Launch Creation
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- Add Project Modal -->
     <div id="addProjectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
         <div class="relative w-full max-w-xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6">
             <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-plus-circle text-brand-500"></i> Add Project Link
+                    <i class="fa-solid fa-plus-circle text-brand-500"></i> Add Creation Entry
                 </h3>
                 <button id="closeAddModal" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <form id="projectForm" class="space-y-4 text-xs sm:text-sm">
                 <div>
-                    <label class="block text-slate-300 mb-1">Project Title *</label>
-                    <input type="text" id="formTitle" required placeholder="e.g. AI Image Editor" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500">
+                    <label class="block text-slate-300 mb-1">Creation Title *</label>
+                    <input type="text" id="formTitle" required placeholder="e.g. Physics Simulator Sandbox" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500">
                 </div>
                 <div>
                     <label class="block text-slate-300 mb-1">Category *</label>
                     <select id="formCategory" required class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500">
-                        <option value="Games & Graphics">Games & Graphics</option>
-                        <option value="Web Apps">Web Apps</option>
-                        <option value="AI & Machine Learning">AI & Machine Learning</option>
-                        <option value="Tools & Utilities">Tools & Utilities</option>
+                        <option value="Games & Arcade">Games & Arcade</option>
+                        <option value="Audio & Synthesizers">Audio & Synthesizers</option>
+                        <option value="Web Tools">Web Tools</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-slate-300 mb-1">Description *</label>
-                    <textarea id="formDescription" rows="3" required placeholder="Project overview..." class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500"></textarea>
-                </div>
-                <div>
-                    <label class="block text-slate-300 mb-1">Live URL *</label>
-                    <input type="url" id="formLiveUrl" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500">
+                    <textarea id="formDescription" rows="3" required placeholder="Creation overview..." class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500"></textarea>
                 </div>
                 <div>
                     <label class="block text-slate-300 mb-1">Tags (comma separated)</label>
-                    <input type="text" id="formTags" placeholder="React, Canvas, Node.js" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500">
+                    <input type="text" id="formTags" placeholder="HTML5 Canvas, Web Audio, JavaScript" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-brand-500">
                 </div>
                 <div class="pt-3 flex justify-end gap-2 border-t border-slate-800">
                     <button type="button" id="cancelAddModal" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl bg-brand-600 text-white font-semibold">Save Project</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-brand-600 text-white font-semibold">Save Creation</button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- AI Copilot Assistant Drawer -->
     <div id="aiDrawer" class="fixed bottom-6 right-6 z-50 w-full max-w-sm bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl hidden flex-col overflow-hidden">
         <div class="flex items-center justify-between p-4 bg-slate-950 border-b border-slate-800">
             <div class="flex items-center gap-3">
@@ -529,7 +548,7 @@
                 </div>
                 <div>
                     <h4 class="font-bold text-sm text-white">Portfolio AI Assistant</h4>
-                    <span class="text-[10px] text-emerald-400 font-mono">Gemini 3 Flash</span>
+                    <span class="text-[10px] text-emerald-400 font-mono">DevHub Assistant</span>
                 </div>
             </div>
             <button id="closeAiDrawer" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark"></i></button>
@@ -538,12 +557,12 @@
             <div class="flex gap-2 items-start">
                 <div class="w-6 h-6 rounded bg-brand-500/20 text-brand-400 flex items-center justify-center text-[10px]"><i class="fa-solid fa-bot"></i></div>
                 <div class="p-3 rounded-xl bg-slate-800 text-slate-200 max-w-[85%]">
-                    Hello! Ask me about Basketball Chaos physics, technical stack details, or portfolio projects!
+                    Hello! Ask me about my Basketball Chaos physics engine, Web Audio sound effects, or portfolio creations!
                 </div>
             </div>
         </div>
         <div class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
-            <input type="text" id="aiInput" placeholder="Ask about Basketball Chaos or skills..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+            <input type="text" id="aiInput" placeholder="Ask about Basketball Chaos or my skills..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
             <button id="aiSendBtn" class="px-3.5 py-2 rounded-xl bg-brand-600 text-white text-xs font-semibold"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
@@ -552,47 +571,39 @@
     <div id="toastContainer" class="fixed bottom-6 left-6 z-50 space-y-2 pointer-events-none"></div>
 
     <script>
-        // Projects Data State
+        // Projects Data State (Only 100% genuine internal creations)
         const DEFAULT_PROJECTS = [
             {
                 id: 'chaos-basketball',
                 title: 'Basketball Chaos Arcade',
-                category: 'Games & Graphics',
-                description: 'An interactive HTML5 Canvas arcade basketball simulation featuring realistic aim trajectory physics, moving hoop targets, combo fire streaks, Web Audio SFX, and skin upgrades.',
-                liveUrl: '#play-basketball',
+                category: 'Games & Arcade',
+                description: 'An interactive HTML5 Canvas arcade basketball simulation featuring drag-aim trajectory physics, dynamic moving hoops, streak multipliers, procedural Web Audio SFX, and skin upgrades.',
                 isGame: true,
                 tags: ['HTML5 Canvas', 'Web Audio API', 'Physics', 'JavaScript'],
-                image: 'https://placehold.co/600x400/0f172a/f97316?text=Basketball+Chaos+Arcade'
             },
             {
-                id: 'gemini-workspace',
-                title: 'Gemini AI Smart Workspace',
-                category: 'AI & Machine Learning',
-                description: 'Interactive productivity application powered by Gemini LLM API featuring prompt generation and contextual assistance.',
-                liveUrl: 'https://example.com/gemini-workspace',
+                id: 'sfx-synth-lab',
+                title: 'Web Audio SFX Synthesizer',
+                category: 'Audio & Synthesizers',
+                description: 'A custom Web Audio API sound generator that synthesizes realistic arcade bounce, swish, rim contact, and coin pickup sounds without external audio assets.',
                 isGame: false,
-                tags: ['Gemini API', 'React', 'Tailwind CSS', 'TypeScript'],
-                image: 'https://placehold.co/600x400/1e1b4b/818cf8?text=Gemini+AI+Workspace'
+                tags: ['Web Audio API', 'Oscillators', 'Audio Filters', 'JavaScript'],
             },
             {
-                id: 'devmetrics',
-                title: 'DevMetrics Kanban Hub',
-                category: 'Web Apps',
-                description: 'Comprehensive project task tracker with drag-and-drop workflow boards and milestone analytics.',
-                liveUrl: 'https://example.com/devmetrics',
+                id: 'particle-playground',
+                title: 'Interactive Particle Sandbox',
+                category: 'Games & Arcade',
+                description: 'Real-time vector particle canvas simulation powering smooth ambient backdrops and fiery trail effects for high-score streaks.',
                 isGame: false,
-                tags: ['Vue.js', 'Tailwind CSS', 'REST API'],
-                image: 'https://placehold.co/600x400/064e3b/34d399?text=DevMetrics+Kanban'
+                tags: ['HTML5 Canvas', '2D Math', 'Animation Loop'],
             },
             {
-                id: 'cloud-explorer',
-                title: 'Cloud File Explorer API',
-                category: 'Tools & Utilities',
-                description: 'Lightweight file management utility providing fast preview rendering and tag organization.',
-                liveUrl: 'https://example.com/cloud-explorer',
+                id: 'copilot-workspace',
+                title: 'DevHub Portfolio Copilot',
+                category: 'Web Tools',
+                description: 'An embedded interactive assistant tool that answers questions regarding project physics algorithms, technical stack choices, and architecture details.',
                 isGame: false,
-                tags: ['Node.js', 'Express', 'Tailwind'],
-                image: 'https://placehold.co/600x400/1e293b/38bdf8?text=Cloud+File+Explorer'
+                tags: ['JavaScript', 'DOM Logic', 'Conversational UI'],
             }
         ];
 
@@ -649,7 +660,6 @@
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-                // Noise buffer for swish sound
                 const bufferSize = this.ctx.sampleRate * 0.25;
                 const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
                 const output = buffer.getChannelData(0);
@@ -677,8 +687,8 @@
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(987.77, this.ctx.currentTime); // B5
-                osc.frequency.setValueAtTime(1318.51, this.ctx.currentTime + 0.08); // E6
+                osc.frequency.setValueAtTime(987.77, this.ctx.currentTime);
+                osc.frequency.setValueAtTime(1318.51, this.ctx.currentTime + 0.08);
                 gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.25);
                 osc.connect(gain);
@@ -788,7 +798,6 @@
                     const dx = this.dragStart.x - this.dragCurrent.x;
                     const dy = this.dragStart.y - this.dragCurrent.y;
                     
-                    // Launch vector
                     this.ball.vx = Math.min(Math.max(dx * 0.18, -25), 25);
                     this.ball.vy = Math.min(Math.max(dy * 0.18, -28), 5);
 
@@ -820,23 +829,20 @@
             }
 
             update() {
-                // Update Hoop Movement based on Difficulty
                 const effectiveHoopRadius = this.hasGoldenHoop ? 42 : 35;
-                if (this.difficulty === 'pro' || this.difficulty === 'allstar' || this.difficulty === 'chaos') {
+                if (this.difficulty === 'pro' || this.difficulty === 'allstar') {
                     this.hoop.y += this.hoop.vy;
                     if (this.hoop.y > this.hoop.baseY + 60 || this.hoop.y < this.hoop.baseY - 60) {
                         this.hoop.vy *= -1;
                     }
                 }
 
-                // Ball Physics
                 if (this.ball.isAirborne) {
-                    this.ball.vx *= 0.99; // Air drag
+                    this.ball.vx *= 0.99;
                     this.ball.vy += this.gravity;
                     this.ball.x += this.ball.vx;
                     this.ball.y += this.ball.vy;
 
-                    // Particle trail for Fireball skin or Streak
                     if (this.hasFireball || this.streak >= 3) {
                         this.particles.push({
                             x: this.ball.x,
@@ -849,7 +855,6 @@
                         });
                     }
 
-                    // Floor Collision
                     if (this.ball.y + this.ball.radius > this.canvas.height - 20) {
                         this.ball.y = this.canvas.height - 20 - this.ball.radius;
                         this.ball.vy *= -0.6;
@@ -857,17 +862,14 @@
                         sounds.playBounce();
                     }
 
-                    // Left/Right Wall Collision
                     if (this.ball.x - this.ball.radius < 0 || this.ball.x + this.ball.radius > this.canvas.width) {
                         this.ball.vx *= -0.7;
                     }
 
-                    // Rim & Backboard Collision logic
                     const backboardX = this.hoop.x + effectiveHoopRadius + 10;
                     const backboardY = this.hoop.y - 60;
                     const backboardH = 90;
 
-                    // Backboard hit
                     if (this.ball.x + this.ball.radius > backboardX - 8 &&
                         this.ball.x - this.ball.radius < backboardX + 10 &&
                         this.ball.y > backboardY && this.ball.y < backboardY + backboardH) {
@@ -876,7 +878,6 @@
                         sounds.playRimHit();
                     }
 
-                    // Rim hits (Left Rim post & Right Rim post)
                     const leftRim = { x: this.hoop.x - effectiveHoopRadius, y: this.hoop.y };
                     const distLeftRim = Math.hypot(this.ball.x - leftRim.x, this.ball.y - leftRim.y);
 
@@ -886,7 +887,6 @@
                         sounds.playRimHit();
                     }
 
-                    // Score Detection: Ball passing through hoop center from top
                     const distHoopCenter = Math.hypot(this.ball.x - this.hoop.x, this.ball.y - this.hoop.y);
                     if (!this.ball.hasScored && distHoopCenter < effectiveHoopRadius && this.ball.vy > 0 && Math.abs(this.ball.y - this.hoop.y) < 15) {
                         this.ball.hasScored = true;
@@ -906,16 +906,14 @@
                         showToast(`SWISH! +${this.streak >= 3 ? '2 (ON FIRE!)' : '1'} Point!`, 'success');
                     }
 
-                    // Reset out of bounds or stopped
                     if (this.ball.y > this.canvas.height + 50 || (Math.abs(this.ball.vx) < 0.2 && Math.abs(this.ball.vy) < 0.2 && this.ball.y > this.canvas.height - 50)) {
                         if (!this.ball.hasScored) {
-                            this.streak = 0; // Reset streak on miss
+                            this.streak = 0;
                         }
                         this.resetBall();
                     }
                 }
 
-                // Update particles
                 for (let i = this.particles.length - 1; i >= 0; i--) {
                     const p = this.particles[i];
                     p.x += p.vx;
@@ -924,7 +922,6 @@
                     if (p.alpha <= 0) this.particles.splice(i, 1);
                 }
 
-                // Sync UI displays
                 document.getElementById('gameScore').textContent = this.score;
                 document.getElementById('gameHighScore').textContent = this.highScore;
                 document.getElementById('gameStreak').textContent = `${this.streak} ${this.streak >= 3 ? '🔥' : ''}`;
@@ -935,14 +932,12 @@
             render() {
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-                // Draw Court Line elements
                 this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
                 this.ctx.lineWidth = 4;
                 this.ctx.beginPath();
                 this.ctx.arc(this.canvas.width * 0.5, this.canvas.height, 180, Math.PI, 0);
                 this.ctx.stroke();
 
-                // Draw Trajectory Prediction Dots
                 if (this.ball.isDragging) {
                     const dx = this.dragStart.x - this.dragCurrent.x;
                     const dy = this.dragStart.y - this.dragCurrent.y;
@@ -964,7 +959,6 @@
                     }
                 }
 
-                // Draw Hoop Backboard
                 const effectiveHoopRadius = this.hasGoldenHoop ? 42 : 35;
                 const backboardX = this.hoop.x + effectiveHoopRadius + 8;
                 const backboardY = this.hoop.y - 60;
@@ -975,14 +969,12 @@
                 this.ctx.fillRect(backboardX, backboardY, 12, 85);
                 this.ctx.strokeRect(backboardX, backboardY, 12, 85);
 
-                // Draw Hoop Rim & Net
                 this.ctx.strokeStyle = this.hasGoldenHoop ? '#fbbf24' : '#ea580c';
                 this.ctx.lineWidth = 6;
                 this.ctx.beginPath();
                 this.ctx.ellipse(this.hoop.x, this.hoop.y, effectiveHoopRadius, 10, 0, 0, Math.PI * 2);
                 this.ctx.stroke();
 
-                // Draw Net lines
                 this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
                 this.ctx.lineWidth = 1.5;
                 this.ctx.beginPath();
@@ -992,7 +984,6 @@
                 }
                 this.ctx.stroke();
 
-                // Draw Particles
                 this.particles.forEach(p => {
                     this.ctx.fillStyle = p.color;
                     this.ctx.globalAlpha = p.alpha;
@@ -1002,17 +993,14 @@
                     this.ctx.globalAlpha = 1;
                 });
 
-                // Draw Basketball
                 this.ctx.save();
                 this.ctx.translate(this.ball.x, this.ball.y);
                 
-                // Ball Outer Shadow / Glow
                 if (this.streak >= 3 || this.hasFireball) {
                     this.ctx.shadowColor = '#f97316';
                     this.ctx.shadowBlur = 20;
                 }
 
-                // Base Ball fill
                 const grad = this.ctx.createRadialGradient(-4, -4, 2, 0, 0, this.ball.radius);
                 grad.addColorStop(0, '#fdba74');
                 grad.addColorStop(0.7, '#ea580c');
@@ -1022,7 +1010,6 @@
                 this.ctx.arc(0, 0, this.ball.radius, 0, Math.PI * 2);
                 this.ctx.fill();
 
-                // Basketball Black Rib Lines
                 this.ctx.strokeStyle = '#1e1005';
                 this.ctx.lineWidth = 2;
                 this.ctx.beginPath();
@@ -1079,6 +1066,58 @@
             showToast(`Copied "${text}" to clipboard!`, 'success');
         }
 
+        // --- Back Button Navigation & History API Support ---
+        const gameModal = document.getElementById('gameModal');
+
+        function openGameModal(pushHistory = true) {
+            gameModal.classList.remove('hidden');
+            if (pushHistory && window.location.hash !== '#game') {
+                history.pushState({ page: 'game' }, 'Basketball Chaos Game', '#game');
+            }
+            if (!gameInstance) {
+                gameInstance = new BasketballGame('gameCanvas');
+            }
+            gameInstance.resize();
+            gameInstance.start();
+        }
+
+        function closeGameModal(popHistory = false) {
+            gameModal.classList.add('hidden');
+            if (gameInstance) gameInstance.stop();
+            if (popHistory && window.location.hash === '#game') {
+                history.back();
+            }
+        }
+
+        // Handle Browser "Back" button presses
+        window.addEventListener('popstate', (e) => {
+            if (!gameModal.classList.contains('hidden')) {
+                closeGameModal(false);
+            }
+        });
+
+        document.getElementById('navPlayGameBtn').onclick = () => openGameModal(true);
+        document.getElementById('heroPlayGameBtn').onclick = () => openGameModal(true);
+        document.getElementById('heroQuickPlay').onclick = () => openGameModal(true);
+        document.getElementById('closeGameModal').onclick = () => closeGameModal(true);
+        document.getElementById('backToHomeBtn').onclick = () => closeGameModal(true);
+
+        // Download Standalone Game File (.html)
+        document.getElementById('downloadGameBtn').onclick = () => {
+            const fullHtmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([fullHtmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Basketball_Chaos_Game.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Downloaded Basketball Chaos standalone game file!', 'success');
+        };
+
+        // Category & Render Functions
         function renderCategoryFilters() {
             const container = document.getElementById('categoryFilterContainer');
             const categories = ['All', ...new Set(projects.map(p => p.category))];
@@ -1137,40 +1176,19 @@
                         <div class="flex flex-wrap gap-1">${p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[11px] font-mono">${t}</span>`).join('')}</div>
                         <div class="flex items-center justify-between pt-1">
                             ${p.isGame ? `
-                                <button onclick="openGameModal()" class="w-full py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold font-tech text-xs flex items-center justify-center gap-1.5 hover:brightness-110">
+                                <button onclick="openGameModal(true)" class="w-full py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold font-tech text-xs flex items-center justify-center gap-1.5 hover:brightness-110">
                                     <span>🏀</span> PLAY GAME NOW
                                 </button>
                             ` : `
-                                <button onclick="openProjectModal('${p.id}')" class="text-xs font-semibold text-brand-400 hover:underline">View Details <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                                <a href="${p.liveUrl}" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-solid fa-external-link text-xs"></i></a>
+                                <button onclick="openProjectModal('${p.id}')" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-brand-400 flex items-center justify-center gap-1">
+                                    View Details & Launch
+                                </button>
                             `}
                         </div>
                     </div>
                 </div>
             `).join('');
         }
-
-        // Modal controls
-        const gameModal = document.getElementById('gameModal');
-        
-        function openGameModal() {
-            gameModal.classList.remove('hidden');
-            if (!gameInstance) {
-                gameInstance = new BasketballGame('gameCanvas');
-            }
-            gameInstance.resize();
-            gameInstance.start();
-        }
-
-        function closeGameModal() {
-            gameModal.classList.add('hidden');
-            if (gameInstance) gameInstance.stop();
-        }
-
-        document.getElementById('navPlayGameBtn').onclick = openGameModal;
-        document.getElementById('heroPlayGameBtn').onclick = openGameModal;
-        document.getElementById('heroQuickPlay').onclick = openGameModal;
-        document.getElementById('closeGameModal').onclick = closeGameModal;
 
         // In-game Shop handlers
         const shopOverlay = document.getElementById('shopOverlay');
@@ -1214,10 +1232,10 @@
         document.getElementById('toggleSoundBtn').onclick = () => {
             sounds.enabled = !sounds.enabled;
             document.getElementById('gameSoundIcon').className = sounds.enabled ? "fa-solid fa-volume-high" : "fa-solid fa-volume-xmark";
-            showToast(sounds.enabled ? "Sound On" : "Sound Muted");
+            showToast(sounds.enabled ? "Sound Enabled" : "Sound Muted");
         };
 
-        // Project Modals & Filters
+        // Project Modals
         function openProjectModal(id) {
             const p = projects.find(item => item.id === id);
             if (!p) return;
@@ -1225,13 +1243,53 @@
             document.getElementById('modalCategoryBadge').textContent = p.category;
             document.getElementById('modalDescription').textContent = p.description;
             document.getElementById('modalTechStack').innerHTML = p.tags.map(t => `<span class="px-2 py-1 bg-slate-800 text-xs text-slate-300 rounded">${t}</span>`).join('');
-            document.getElementById('modalLiveLink').href = p.liveUrl;
+            
+            const modalBtn = document.getElementById('modalActionBtn');
+            if (p.isGame) {
+                modalBtn.onclick = () => {
+                    document.getElementById('projectModal').classList.add('hidden');
+                    openGameModal(true);
+                };
+            } else {
+                modalBtn.onclick = () => {
+                    document.getElementById('projectModal').classList.add('hidden');
+                    showToast(`Launching ${p.title} demo...`, 'success');
+                };
+            }
             document.getElementById('projectModal').classList.remove('hidden');
         }
 
         document.getElementById('closeProjectModal').onclick = () => document.getElementById('projectModal').classList.add('hidden');
-        
-        // Add project modal
+
+        // Search & Layout Toggles
+        document.getElementById('searchInput').oninput = (e) => {
+            searchQuery = e.target.value;
+            renderProjects();
+        };
+
+        document.getElementById('viewGridBtn').onclick = () => {
+            isGridView = true;
+            document.getElementById('viewGridBtn').className = "p-2 rounded-lg bg-slate-800 text-brand-400";
+            document.getElementById('viewListBtn').className = "p-2 rounded-lg text-slate-400 hover:text-white";
+            renderProjects();
+        };
+
+        document.getElementById('viewListBtn').onclick = () => {
+            isGridView = false;
+            document.getElementById('viewListBtn').className = "p-2 rounded-lg bg-slate-800 text-brand-400";
+            document.getElementById('viewGridBtn').className = "p-2 rounded-lg text-slate-400 hover:text-white";
+            renderProjects();
+        };
+
+        document.getElementById('resetFiltersBtn').onclick = () => {
+            searchQuery = '';
+            activeCategory = 'All';
+            document.getElementById('searchInput').value = '';
+            renderCategoryFilters();
+            renderProjects();
+        };
+
+        // Add Project Modal
         const addProjectModal = document.getElementById('addProjectModal');
         document.getElementById('addProjectBtn').onclick = () => addProjectModal.classList.remove('hidden');
         document.getElementById('closeAddModal').onclick = () => addProjectModal.classList.add('hidden');
@@ -1242,15 +1300,14 @@
             const title = document.getElementById('formTitle').value;
             const category = document.getElementById('formCategory').value;
             const description = document.getElementById('formDescription').value;
-            const liveUrl = document.getElementById('formLiveUrl').value;
             const tagsRaw = document.getElementById('formTags').value;
-            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()) : ['Web App'];
+            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()) : ['Creation'];
 
-            projects.unshift({ id: 'proj-' + Date.now(), title, category, description, liveUrl, tags, isGame: false });
+            projects.unshift({ id: 'proj-' + Date.now(), title, category, description, tags, isGame: false });
             renderCategoryFilters();
             renderProjects();
             addProjectModal.classList.add('hidden');
-            showToast(`Added "${title}" to portfolio!`, 'success');
+            showToast(`Added "${title}" to your creations!`, 'success');
         };
 
         // Export Data
@@ -1258,12 +1315,20 @@
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projects, null, 2));
             const anchor = document.createElement('a');
             anchor.setAttribute("href", dataStr);
-            anchor.setAttribute("download", "portfolio_projects.json");
+            anchor.setAttribute("download", "devhub_creations.json");
             anchor.click();
-            showToast('Exported projects configuration!', 'success');
+            showToast('Exported creations config JSON!', 'success');
         };
 
-        // AI Drawer
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.onclick = () => mobileMenu.classList.add('hidden');
+        });
+
+        // AI Copilot Assistant Drawer
         const aiDrawer = document.getElementById('aiDrawer');
         document.getElementById('aiBotToggleBtn').onclick = () => aiDrawer.classList.toggle('hidden');
         document.getElementById('closeAiDrawer').onclick = () => aiDrawer.classList.add('hidden');
@@ -1278,26 +1343,30 @@
             input.value = '';
 
             setTimeout(() => {
-                let response = "Basketball Chaos uses HTML5 Canvas vector math for drag aiming, rim bounce collision sensors, and procedural Web Audio API sounds!";
+                let response = "Sam created Basketball Chaos using pure HTML5 Canvas trajectory math in Mr. Smith's Building With AI class!";
                 if (query.toLowerCase().includes('skill') || query.toLowerCase().includes('stack')) {
-                    response = "The tech stack includes HTML5 Canvas, Tailwind CSS, TypeScript, React, Node.js, and Gemini LLM integration!";
+                    response = "Sam's tech stack includes HTML5 Canvas, Web Audio API, Tailwind CSS, JavaScript ES6+, and AI-assisted web workflows!";
+                } else if (query.toLowerCase().includes('download') || query.toLowerCase().includes('offline')) {
+                    response = "You can click the 'Download Game' button inside Basketball Chaos to save a 100% standalone single HTML file to play offline!";
+                } else if (query.toLowerCase().includes('who') || query.toLowerCase().includes('sam') || query.toLowerCase().includes('class') || query.toLowerCase().includes('smith')) {
+                    response = "Sam is a high school basketball player learning web development in Mr. Smith's 'Building With AI' class!";
                 }
                 chat.innerHTML += `<div class="flex gap-2 items-start"><div class="w-6 h-6 rounded bg-brand-500/20 text-brand-400 flex items-center justify-center text-[10px]"><i class="fa-solid fa-bot"></i></div><div class="p-3 rounded-xl bg-slate-800 text-slate-200 max-w-[85%]">${response}</div></div>`;
                 chat.scrollTop = chat.scrollHeight;
             }, 500);
         };
 
-        // Background Particles
+        // Ambient Background Particles
         const bgCanvas = document.getElementById('bgCanvas');
         const bgCtx = bgCanvas.getContext('2d');
-        let particles = [];
+        let bgParticles = [];
 
         function resizeBgCanvas() {
             bgCanvas.width = window.innerWidth;
             bgCanvas.height = window.innerHeight;
-            particles = [];
+            bgParticles = [];
             for (let i = 0; i < Math.floor(window.innerWidth / 25); i++) {
-                particles.push({
+                bgParticles.push({
                     x: Math.random() * bgCanvas.width,
                     y: Math.random() * bgCanvas.height,
                     radius: Math.random() * 1.5 + 0.5,
@@ -1310,7 +1379,7 @@
         function drawBgParticles() {
             bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
             bgCtx.fillStyle = 'rgba(129, 140, 248, 0.4)';
-            particles.forEach(p => {
+            bgParticles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0) p.x = bgCanvas.width;
                 if (p.x > bgCanvas.width) p.x = 0;
@@ -1329,6 +1398,10 @@
             drawBgParticles();
             renderCategoryFilters();
             renderProjects();
+
+            if (window.location.hash === '#game') {
+                openGameModal(false);
+            }
 
             window.addEventListener('resize', () => {
                 resizeBgCanvas();
